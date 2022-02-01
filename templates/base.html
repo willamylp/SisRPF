@@ -12,11 +12,12 @@
     <title>{% block title %}{% endblock%}</title>
     <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <link href="{% static 'css/all-themes.css' %}" rel="stylesheet">
+
     {% block styles %}{% endblock %}
 </head>
 {% block body %}
-   
-    {% block content %}{% endblock%}
+
+    {% block content %}{% endblock %}
 
     {% block scripts %}{% endblock %}
 

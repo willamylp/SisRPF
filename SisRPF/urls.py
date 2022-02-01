@@ -28,4 +28,6 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name="logout"),
     path("loadApp/", loadApp),
     path("logoutApp/", logoutApp),
+
+    path('home/', include(home_urls)),
 ]

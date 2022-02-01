@@ -1,5 +1,5 @@
 function loading(opcao) {
-    var time = 1000;
+    var time = 1500;
     if (opcao == 'login') {
         setTimeout(function () {
             window.location.href = "../home";

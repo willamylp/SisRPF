@@ -1,0 +1,80 @@
+{% load static %}
+ <div class="app-header header-shadow">
+    <div class="app-header__logo">
+        <div>
+            <img src="{% static 'images/logo-color.png' %}" style="max-width: 100px;" alt="Logo SisRPF">
+        </div>
+        <div class="header__pane ml-auto">
+            <div>
+                <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="app-header__mobile-menu">
+        <div>
+            <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="app-header__menu">
+        <span>
+            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                <span class="btn-icon-wrapper">
+                    <i class="fa fa-ellipsis-v fa-w-6"></i>
+                </span>
+            </button>
+        </span>
+    </div>
+    <div class="app-header__content">
+        {% comment %} <div class="app-header-left">
+            <div class="search-wrapper">
+                <div class="input-holder">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-icon"><span></span></button>
+                </div>
+                <button class="close"></button>
+            </div>
+        </div> {% endcomment %}
+        <div class="app-header-right">
+            <div class="header-btn-lg pr-0">
+                <div class="widget-content p-0">
+                    <div class="widget-content-wrapper">
+                        <div class="widget-content-left">
+                            <div class="btn-group">
+                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                    <button class="mr-2 ml-3 btn-icon btn-icon-only btn btn-outline-info">
+                                        {{request.user.first_name}} {{request.user.last_name}}
+                                        <i class="pe-7s-info btn-icon-wrapper"></i> 
+                                    </button>
+                                </a>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                    <button type="button" tabindex="0" class="dropdown-item">Perfil</button>
+                                    <button type="button" tabindex="0" class="dropdown-item">Settings</button>
+                                    <h6 tabindex="-1" class="dropdown-header">Header</h6>
+                                    <button type="button" tabindex="0" class="dropdown-item">Actions</button>
+                                    <div tabindex="-1" class="dropdown-divider"></div>
+                                    <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-content-left ml-3 header-user-info">
+                            <div>
+                                <button class="mr-2 ml-3 btn-icon btn-icon-only btn btn-outline-danger">
+                                    {% comment %} <i class="pe-7s-angle-right btn-icon-wrapper"></i> {% endcomment %}
+                                    <i class="material-icons col-red font-15">exit_to_app</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
