@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'widget_tweaks',
 
+    'Home',
+
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,7 @@ ROOT_URLCONF = 'SisRPF.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,9 +139,9 @@ else:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # LOGIN
-# LOGIN_URL = '/login/'
-# LOGIN_REDIRECT_URL = '/loadApp/'
-# LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/loadApp/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Ajustes na sessão
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
