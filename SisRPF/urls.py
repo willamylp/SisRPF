@@ -20,6 +20,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 from SisRPF.views import loadApp, logoutApp
 from Home import urls as home_urls
+from Prontuario_Familiar import urls as prontuarios_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +31,5 @@ urlpatterns = [
     path("logoutApp/", logoutApp),
 
     path('home/', include(home_urls)),
+    path('prontuario/', include(prontuarios_urls)),
 ]

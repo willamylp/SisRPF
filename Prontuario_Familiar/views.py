@@ -15,8 +15,9 @@ def RegistrarProntuario(request):
     if(formProntuario.is_valid()):
         formProntuario.save()
         messages.success(request, 'Prontuário Registrado com Sucesso!')
-        return redirect('../RegistrarResponsavel')
-    return render(request, 'RegistrarProntuario' {'formProntuario': formProntuario})
+        return redirect('../RegistroResponsavel')
+    return render(request, 'registros/form_prontuario.html', {'formProntuario': formProntuario})
+
 
 @login_required
 def RegistrarResponsavel(request):
@@ -25,8 +26,8 @@ def RegistrarResponsavel(request):
     if(formResponsavel.is_valid()):
         formResponsavel.save()
         messages.success(request, 'Responsável Registrado com Sucesso!')
-        return redirect('../RegistrarGrupoFamiliar')
-    return render(request, 'RegistrarResponsavel', {'formResponsavel': formResponsavel})
+        return redirect('../RegistroGrupoFamiliar')
+    return render(request, 'registros/form_responsavel.html', {'formResponsavel': formResponsavel})
 
 @login_required
 def RegistrarGrupoFamiliar(request, id):
@@ -35,8 +36,8 @@ def RegistrarGrupoFamiliar(request, id):
     if(formGrupoFamiliar.is_valid()):
         formGrupoFamiliar.save()
         messages.success(request, 'Membro do Grupo Familiar Registrado com Sucesso!')
-        return redirect('RegistrarGrupoFamiliar')
-    return render(request, 'RegistrarGrupoFamiliar', {'formGrupoFamiliar': formGrupoFamiliar})
+        return redirect('RegistroGrupoFamiliar')
+    return render(request, 'registros/form_integrantes.html', {'formGrupoFamiliar': formGrupoFamiliar})
 
 @login_required
 def AtualizarProntuario(request, id):
