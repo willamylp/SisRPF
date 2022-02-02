@@ -57,7 +57,7 @@
                                 <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                     <button type="button" tabindex="0" class="dropdown-item">Perfil</button>
                                     <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                                    <h6 tabindex="-1" class="dropdown-header">Header</h6>
+                                    <h6 tabindex="-1" class="dropdown-item">Header</h6>
                                     <button type="button" tabindex="0" class="dropdown-item">Actions</button>
                                     <div tabindex="-1" class="dropdown-divider"></div>
                                     <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
@@ -66,10 +66,12 @@
                         </div>
                         <div class="widget-content-left ml-3 header-user-info">
                             <div>
-                                <button class="mr-2 ml-3 btn-icon btn-icon-only btn btn-outline-danger">
-                                    {% comment %} <i class="pe-7s-angle-right btn-icon-wrapper"></i> {% endcomment %}
-                                    <i class="material-icons col-red font-15">exit_to_app</i>
-                                </button>
+                                <a href="{% url 'logoutApp' %}" data-toggle="tooltip" data-placement="bottom" title="Sair do Sistema">
+                                    <button class="mr-2 ml-3 btn-icon btn-icon-only btn btn-outline-danger">
+                                        <i class="pe-7s-angle-right btn-icon-wrapper"></i>
+                                        {% comment %} <i class="material-icons col-red font-15">exit_to_app</i> {% endcomment %}
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
