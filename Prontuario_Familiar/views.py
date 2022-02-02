@@ -10,11 +10,10 @@ from .forms import ProntuarioForm, ResponsavelForm, GrupoFamiliarForm
 # Create your views here.
 @login_required
 def RegistrarProntuario(request):
-    formProntuario = ResponsavelForm(request.POST or None)
+    formProntuario = ProntuarioForm(request.POST or None)
     
     if(formProntuario.is_valid()):
         formProntuario.save()
-        messages.success(request, 'Prontuário Registrado com Sucesso!')
         return redirect('../RegistroResponsavel')
     return render(request, 'registros/form_prontuario.html', {'formProntuario': formProntuario})
 
@@ -25,7 +24,6 @@ def RegistrarResponsavel(request):
     
     if(formResponsavel.is_valid()):
         formResponsavel.save()
-        messages.success(request, 'Responsável Registrado com Sucesso!')
         return redirect('../RegistroGrupoFamiliar')
     return render(request, 'registros/form_responsavel.html', {'formResponsavel': formResponsavel})
 
@@ -35,7 +33,6 @@ def RegistrarGrupoFamiliar(request):
 
     if(formGrupoFamiliar.is_valid()):
         formGrupoFamiliar.save()
-        messages.success(request, 'Membro do Grupo Familiar Registrado com Sucesso!')
         return redirect('RegistroGrupoFamiliar')
     return render(request, 'registros/form_integrantes.html', {'formGrupoFamiliar': formGrupoFamiliar})
 
