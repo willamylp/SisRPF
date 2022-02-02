@@ -2,10 +2,25 @@ from django.db import models
 from datetime import datetime
 
 # Create your models here.
-class Responsavel(models.Model):
+class Prontuario(models.Model):
+    numero = models.CharField(max_length=10, blank=False)
+    ano = models.IntegerField(blank=False)
+    data = models.DateField(blank=False)
+    unidade_saude = models.CharField(max_length=100, blank=False, default='HMTLQS')
+    class Meta:
+        verbose_name = ("Prontuario Familiar")
+        verbose_name_plural = ("Prontuarios")
 
+    def __str__(self):
+        return '{} / {}'.format(self.numero, self.ano)
+
+    def get_absolute_url(self):
+        return reverse("Prontuario_detail", kwargs={"pk": self.pk})
+
+class Responsavel(models.Model):
+    prontuario = models.ForeignKey(Prontuario, on_delete=models.CASCADE)
     # ---> INFORMAÇÕES PESSOAIS <---
-    nome_responsvel = models.CharField(max_length=200, blank=False, null=False)
+    nome = models.CharField(max_length=200, blank=False, null=False)
     dt_nascimento = models.DateField(blank=False)
     cpf = models.CharField(max_length=14, unique=True, blank=True, null=True)
 
@@ -21,27 +36,10 @@ class Responsavel(models.Model):
         verbose_name_plural = ("Responsaveis")
 
     def __str__(self):
-        return self.name
+        return '{} | {}/{}'.format(self.nome, self.prontuario.numero, self.prontuario.ano)
 
     def get_absolute_url(self):
         return reverse("Responsavel_detail", kwargs={"pk": self.pk})
-
-class Prontuario(models.Model):
-    responsavel = models.ForeignKey(Responsavel, on_delete=models.CASCADE)
-
-    numero = models.IntegerField(blank=False)
-    ano = models.IntegerField(blank=False)
-
-
-    class Meta:
-        verbose_name = ("Prontuario Familiar")
-        verbose_name_plural = ("Prontuarios")
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse("Prontuario_detail", kwargs={"pk": self.pk})
 
 class GrupoFamiliar(models.Model):
 
@@ -71,7 +69,7 @@ class GrupoFamiliar(models.Model):
         ('Pós-graduação Completo', 'PÓS-GRADUAÇÃO COMPLETO'),
     )
 
-    prontuario = models.ForeignKey(Prontuario, on_delete=models.CASCADE)
+    responsavel = models.ForeignKey(Responsavel, on_delete=models.CASCADE)
 
     nome = models.CharField(max_length=200, blank=False, null=False)
     parentesco = models.CharField(max_length=50, blank=False, null=False)
@@ -89,7 +87,7 @@ class GrupoFamiliar(models.Model):
         verbose_name_plural = ("GruposFamiliares")
 
     def __str__(self):
-        return self.name
+        return self.nome
 
     def get_absolute_url(self):
         return reverse("GrupoFamiliar_detail", kwargs={"pk": self.pk})
