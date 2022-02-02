@@ -9,17 +9,62 @@ from .forms import ProntuarioForm, ResponsavelForm, GrupoFamiliarForm
 
 # Create your views here.
 @login_required
+def RegistrarProntuario(request):
+    formProntuario = ResponsavelForm(request.POST or None)
+    
+    if(formProntuario.is_valid()):
+        formProntuario.save()
+        messages.success(request, 'Prontuário Registrado com Sucesso!')
+        return redirect('../RegistrarResponsavel')
+    return render(request, 'RegistrarProntuario' {'formProntuario': formProntuario})
+
+@login_required
 def RegistrarResponsavel(request):
     formResponsavel = ResponsavelForm(request.POST or None)
     
     if(formResponsavel.is_valid()):
-        form.save()
+        formResponsavel.save()
         messages.success(request, 'Responsável Registrado com Sucesso!')
-        return redirect('../RegistrarProntuario')
-    return render(request, 'RegistroResponsavel')
+        return redirect('../RegistrarGrupoFamiliar')
+    return render(request, 'RegistrarResponsavel', {'formResponsavel': formResponsavel})
 
-def AtualizarRegistro(request, id):
-    
+@login_required
+def RegistrarGrupoFamiliar(request, id):
+    formGrupoFamiliar = GrupoFamiliarForm(request.POST or None)
+
+    if(formGrupoFamiliar.is_valid()):
+        formGrupoFamiliar.save()
+        messages.success(request, 'Membro do Grupo Familiar Registrado com Sucesso!')
+        return redirect('RegistrarGrupoFamiliar')
+    return render(request, 'RegistrarGrupoFamiliar', {'formGrupoFamiliar': formGrupoFamiliar})
+
+@login_required
+def AtualizarProntuario(request, id):
+    prontuario = get_object_or_404(Prontuario, pk=id)
+    form = ProntuarioForm(request.POST or None, instance=prontuario)
+    if(form.is_valid()):
+        form.save()
+        return redirect('../../ListarProntuarios')
+
+@login_required
+def AtualizarResponsavel(request, id):
+    responsavel = get_object_or_404(Responsavel, pk=id)
+    form = ProntuarioForm(request.POST or None, instance=responsavel)
+    if(form.is_valid()):
+        form.save()
+        return redirect('../../ListarProntuarios')
+
+@login_required
+def AtualizarGrupoFamiliar(request, id):
+    integrante = get_object_or_404(Responsavel, pk=id)
+    form = ProntuarioForm(request.POST or None, instance=integrante)
+    if(form.is_valid()):
+        form.save()
+        return redirect('../../ListarProntuarios')
+
+@login_required
+def BuscarProntuario(request):
+    pass
 
 @login_required
 def DeletarProntuario(request, id):
