@@ -30,7 +30,7 @@ def RegistrarResponsavel(request):
     return render(request, 'registros/form_responsavel.html', {'formResponsavel': formResponsavel})
 
 @login_required
-def RegistrarGrupoFamiliar(request, id):
+def RegistrarGrupoFamiliar(request):
     formGrupoFamiliar = GrupoFamiliarForm(request.POST or None)
 
     if(formGrupoFamiliar.is_valid()):

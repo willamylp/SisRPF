@@ -75,7 +75,7 @@ class GrupoFamiliar(models.Model):
     parentesco = models.CharField(max_length=50, blank=False, null=False)
     dt_nascimento = models.DateField(blank=False)
 
-    sexo = models.CharField(max_length=20, blank=False, choices=SEXO, default='')
+    sexo = models.CharField(max_length=20, blank=True, choices=SEXO, default='')
     estado_civil = models.CharField(max_length=50, blank=True, choices=ESTADO_CIVIL, default='')
     naturalidade = models.CharField(max_length=20, blank=False, null=False)
     escolaridade = models.CharField(max_length=50, blank=True, choices=ESCOLARIDADE, default='')
