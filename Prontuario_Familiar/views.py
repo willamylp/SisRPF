@@ -34,10 +34,15 @@ def RegistrarProntuario(request):
         elif(request.POST['nome'] == ''):
             return render(
                 request, 
-                'registros/form_prontuario.html', {
-                    'formP': formP, 'formR': formR}
+                'registros/form_prontuario.html', 
+                {'formP': formP, 'formR': formR}
             )
         return redirect('../RegistroGrupoFamiliar')
+    return render(
+        request,
+        'registros/form_prontuario.html',
+        {'formP': formP, 'formR': formR}
+    )
         
 
     
@@ -102,4 +107,4 @@ def BuscarProntuario(request):
 def DeletarProntuario(request, id):
     prontuario = get_object_or_404(Prontuario, pk=id)
     prontuario.delete()
-    return redirect('../../ListarProntuarios')
+    return redirect('../ListarProntuarios')
