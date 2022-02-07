@@ -4,7 +4,6 @@ from datetime import datetime
 # Create your models here.
 class Prontuario(models.Model):
     numero = models.CharField(max_length=10, blank=False)
-    ano = models.IntegerField(blank=False)
     data = models.DateField(blank=False)
     unidade_saude = models.CharField(max_length=100, blank=False, default='HMTLQS')
     class Meta:

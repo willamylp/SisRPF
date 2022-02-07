@@ -1,5 +1,299 @@
-<form action = "" method = "post">
-    {% csrf_token %}
-    {{formProntuario.as_p }}
-    <input type="submit" value="Submit">
-</form>
+{% extends "base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}INÍCIO — SisRPF{% endblock title %}
+
+{% block styles %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+	<!-- Waves Effect Css -->
+    <link href="{% static 'plugins/node-waves/waves.css' %}" rel="stylesheet" />
+	<!-- Animation Css -->
+    <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />
+	<!-- Custom Css -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+{% endblock styles %}
+
+{% block body %}
+<body>
+    {% block content %}
+        <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+            {% include 'header.html' %}
+            
+            <div class="app-main">
+                {% include "menu.html" %}
+                <div class="app-main__outer">
+                    <div class="app-main__inner">
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-id mr-1 icon-gradient bg-grow-early">
+                                        </i>
+                                    </div>
+                                    <div>Registrar Prontuário
+                                        <div class="page-title-subheading">
+                                            <span>Registro do Prontuário Familiar do Cidadão</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-card mb-3 card">
+                            <div class="card-body">
+                                <form class="needs-validation" novalidate>
+                                    {% csrf_token %}
+
+                                    <div class="form-row">
+                                        <div class="col-md-3 mb-2">
+                                            <label for="id_numero">Número do Prontuário</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <b class="text-white">Nº</b>
+                                                    </span>
+                                                </div>
+                                                {{ formP.numero|add_class:'form-control'|attr:'placeholder:Ex.: 3500-A' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Informe o número corretamente!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label for="id_ano">Data do Registro</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend ">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <i class="fa fa-calendar-check text-white" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formP.data|add_class:'form-control'|attr:'type:date' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Informe a Data corretamente!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 mb-2">
+                                            <label for="id_unidade_saude">Unidade de Saúde</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <i class="fa fa-hospital text-white" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formP.unidade_saude|add_class:'form-control'|attr:'placeholder:Ex.: HMTLQS' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Informe uma Unidade de Saúde.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr>
+
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-4">
+                                            <label for="id_unidade_saude">Nome do Responsável</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <i class="fa fa-user-circle text-white" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formR.nome|add_class:'form-control'|attr:'placeholder:Responsável pelo Prontuário Familiar' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Por favor, informe o Nome do Responsável!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="id_dt_nascimento">Data de Nascimento</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend ">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <i class="fa fa-calendar-check text-white" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formR.dt_nascimento|add_class:'form-control'|attr:'type:date' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Por favor, informe a Data corretamente!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="id_cpf">CPF</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-heavy-rain">
+                                                        <i class="fa fa-address-card text-black" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formR.cpf|add_class:'form-control' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Informe um CPF válido.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-md-9 mb-4">
+                                            <label for="id_logradouro">Logradouro</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <i class="fa fa-home text-white" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formR.logradouro|add_class:'form-control'|attr:'placeholder:Nome da Rua, Travessa, Sitio ...' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Informe um Endereço!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-4">
+                                            <label for="id_num_endereco">Número</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <b class="text-white">Nº</b>
+                                                    </span>
+                                                </div>
+                                                {{ formR.num_endereco|add_class:'form-control'|attr:'placeholder:Ex.: 80-A' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Informe o número corretamente!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-4">
+                                            <label for="id_bairro">Bairro</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <i class="fa fa-map-signs text-white" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formR.bairro|add_class:'form-control'|attr:'placeholder:Nome do Bairro' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Informe um Bairro
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-4">
+                                            <label for="id_unidade_saude">Complemento</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-heavy-rain">
+                                                        <i class="fa fa-info-circle text-black" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formR.complemento|add_class:'form-control'|attr:'placeholder:Casa, Ap, Andar...' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 mb-4">
+                                            <label for="di_ponto_referencia">Ponto de Referência</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-heavy-rain">
+                                                        <i class="fa fa-map text-black" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formR.ponto_referencia|add_class:'form-control'|attr:'placeholder:Ponto de Referência' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Informe o número corretamente!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-2">
+                                            <i class="fa fa-square icon-gradient bg-night-sky" aria-hidden="true"></i>
+                                            <strong>&nbsp;Campos Obrigatórios</strong>
+                                        </div>
+                                    </div>
+                                    <div class="d-block text-center card-footer mt-2">
+                                        <button class="btn-transition btn btn-lg btn-outline-success mt-3" type="submit">
+                                            <i class="fa fa-save" aria-hidden="true"></i>
+                                            <b>&nbsp;Continuar Registro &rarr;</b>
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <script>
+                                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                    (function() {
+                                        'use strict';
+                                        window.addEventListener('load', function() {
+                                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                            var forms = document.getElementsByClassName('needs-validation');
+                                            // Loop over them and prevent submission
+                                            var validation = Array.prototype.filter.call(forms, function(form) {
+                                                form.addEventListener('submit', function(event) {
+                                                    if (form.checkValidity() === false) {
+                                                        event.preventDefault();
+                                                        event.stopPropagation();
+                                                    }
+                                                    form.classList.add('was-validated');
+                                                }, false);
+                                            });
+                                        }, false);
+                                    })();
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div>
+        </div>
+    {% endblock content %}
+
+
+    {% block scripts %}
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    {% endblock scripts %}
+</body>
+{% endblock body %}
+
+

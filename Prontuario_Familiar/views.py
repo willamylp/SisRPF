@@ -8,15 +8,49 @@ from .models import Responsavel, Prontuario, GrupoFamiliar
 from .forms import ProntuarioForm, ResponsavelForm, GrupoFamiliarForm
 
 # Create your views here.
+
 @login_required
 def RegistrarProntuario(request):
-    formProntuario = ProntuarioForm(request.POST or None)
-    
-    if(formProntuario.is_valid()):
-        formProntuario.save()
-        return redirect('../RegistroResponsavel')
-    return render(request, 'registros/form_prontuario.html', {'formProntuario': formProntuario})
+    formP = ProntuarioForm(request.POST or None)
+    formR = ResponsavelForm(request.POST or None)
 
+    if(formP.is_valid()):
+        formP.save()
+        if(request.POST['nome'] != ''):
+            Responsavel.objects.create(
+                prontuario = Prontuario.objects.get(
+                    pk=Prontuario.objects.filter(numero=request.POST['numero'])[:1]
+                ),
+                nome = request.POST['nome'],
+                dt_nascimento = request.POST['dt_nascimento'],
+                cpf = request.POST['cpf'],
+                logradouro = request.POST['logradouro'],
+                num_endereco = request.POST['num_endereco'],
+                complemento = request.POST['complemento'],
+                bairro = request.POST['bairro'],
+                ponto_referencia = request.POST['ponto_referencia'],
+            ).save()
+            
+        elif(request.POST['nome'] == ''):
+            return render(
+                request, 
+                'registros/form_prontuario.html', {
+                    'formP': formP, 'formR': formR}
+            )
+        return redirect('../RegistroGrupoFamiliar')
+        
+
+    
+# @login_required
+# def RegistrarProntuario(request):
+#     formP = ProntuarioForm(request.POST or None)
+#     formR = ResponsavelForm(request.POST or None)
+
+#     if((formP.is_valid()) and (formR.is_valid())):
+#         formP.save()
+#         formR.save()
+#         return redirect('../RegistroGrupoFamiliar')
+#     return render(request, 'registros/form_prontuario.html', {'formP': formP, 'formR': formR})
 
 @login_required
 def RegistrarResponsavel(request):
