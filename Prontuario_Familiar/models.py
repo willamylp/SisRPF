@@ -11,7 +11,7 @@ class Prontuario(models.Model):
         verbose_name_plural = ("Prontuarios")
 
     def __str__(self):
-        return '{} / {}'.format(self.numero, self.ano)
+        return self.numero
 
     def get_absolute_url(self):
         return reverse("Prontuario_detail", kwargs={"pk": self.pk})
@@ -35,7 +35,7 @@ class Responsavel(models.Model):
         verbose_name_plural = ("Responsaveis")
 
     def __str__(self):
-        return '{} | {}/{}'.format(self.nome, self.prontuario.numero, self.prontuario.ano)
+        return '{} | {}'.format(self.nome, self.prontuario.numero)
 
     def get_absolute_url(self):
         return reverse("Responsavel_detail", kwargs={"pk": self.pk})
