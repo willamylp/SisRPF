@@ -70,7 +70,7 @@
                                                     OK!
                                                 </div>
                                                 <div class="invalid-tooltip">
-                                                    Por favor, informe um Nome!
+                                                    Informe um Nome!
                                                 </div>
                                             </div>
                                         </div>
@@ -87,12 +87,27 @@
                                                     OK!
                                                 </div>
                                                 <div class="invalid-tooltip">
-                                                    Por favor, informe a Data corretamente!
+                                                    Informe a Data corretamente!
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3 mb-4">
-                                            <label for="id_nome_integrante">Parentesco</label>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="id_dt_nascimento">Sexo</label>
+                                            <div class="input-group">
+                                                <select name="select" class="form-control">
+                                                    <option></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-4">
+                                            <label for="id_parentesco">Parentesco</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-night-sky">
@@ -104,56 +119,90 @@
                                                     OK!
                                                 </div>
                                                 <div class="invalid-tooltip">
-                                                    Por favor, informe um Nome!
+                                                    Informe o grau de Parentesco!
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-8 mb-4">
-                                            <label for="id_nome_integrante">Nome do Integrante</label>
+                                        <div class="col-md-4 mb-4">
+                                            <label for="id_naturalidade">Naturalidade</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-night-sky">
                                                         <i class="fa fa-user-circle text-white" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
+                                                {{ formGF.naturalidade|add_class:'form-control'|attr:'placeholder:Cidade onde Nasceu' }}
                                                 <div class="valid-feedback">
                                                     OK!
                                                 </div>
                                                 <div class="invalid-tooltip">
-                                                    Por favor, informe um Nome!
+                                                    Informe a Naturalidade!
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="id_dt_nascimento">Estado Civil</label>
+                                            <div class="input-group">
+                                                <select name="select" class="form-control">
+                                                    <option></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-8 mb-4">
-                                            <label for="id_nome_integrante">Nome do Integrante</label>
+                                        <div class="col-md-4 mb-4">
+                                            <label for="id_ativ_economica">Atividade Econômica</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-night-sky">
                                                         <i class="fa fa-user-circle text-white" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                
+                                                {{ formGF.ativ_economica|add_class:'form-control'|attr:'placeholder:Profissão' }}
                                                 <div class="valid-feedback">
                                                     OK!
                                                 </div>
                                                 <div class="invalid-tooltip">
-                                                    Por favor, informe um Nome!
+                                                    Informe uma Profissao!
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-4 mb-4">
+                                            <label for="id_renda">Renda</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-heavy-rai">
+                                                        <i class="fa fa-user-circle text-black" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formGF.renda|add_class:'form-control'|attr:'placeholder:R$' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Informe a Naturalidade!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="id_dt_nascimento">Grau de Escolaridade</label>
+                                            <div class="input-group">
+                                                <select name="select" class="form-control">
+                                                    <option></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <select name="select" id="exampleSelect" class="form-control">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
-                                    {{ formGF.sexo }}
                                     <hr>
                                     <div class="form-row">
                                         <div class="col-md-12 mb-2">

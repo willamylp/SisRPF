@@ -71,12 +71,13 @@ class GrupoFamiliar(models.Model):
     responsavel = models.ForeignKey(Responsavel, on_delete=models.CASCADE)
 
     nome_integrante = models.CharField(max_length=200, blank=False, null=False)
-    parentesco = models.CharField(max_length=50, blank=False, null=False)
     dt_nascimento = models.DateField(blank=False)
-
     sexo = models.CharField(max_length=20, blank=True, choices=SEXO, default='')
-    estado_civil = models.CharField(max_length=50, blank=True, choices=ESTADO_CIVIL, default='')
+
+    parentesco = models.CharField(max_length=50, blank=False, null=False)
     naturalidade = models.CharField(max_length=20, blank=False, null=False)
+    estado_civil = models.CharField(max_length=50, blank=True, choices=ESTADO_CIVIL, default='')
+    
     escolaridade = models.CharField(max_length=50, blank=True, choices=ESCOLARIDADE, default='')
     ativ_economica = models.CharField(max_length=50, blank=False, null=False)
     renda = models.FloatField(blank=True)
