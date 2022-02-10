@@ -16,7 +16,7 @@ def RegistrarProntuario(request):
 
     if(formP.is_valid()):
         formP.save()
-        if(request.POST['nome'] != ''):
+        if('nome' in request.POST):
             Responsavel.objects.create(
                 prontuario = Prontuario.objects.get(
                     pk=Prontuario.objects.filter(numero=request.POST['numero'])[:1]
@@ -31,7 +31,8 @@ def RegistrarProntuario(request):
                 ponto_referencia = request.POST['ponto_referencia'],
             ).save()
             
-        elif(request.POST['nome'] == ''):
+        #elif(request.POST['nome'] == ''):
+        else:
             return render(
                 request, 
                 'registros/form_prontuario.html', 
@@ -43,19 +44,6 @@ def RegistrarProntuario(request):
         'registros/form_prontuario.html',
         {'formP': formP, 'formR': formR}
     )
-        
-
-    
-# @login_required
-# def RegistrarProntuario(request):
-#     formP = ProntuarioForm(request.POST or None)
-#     formR = ResponsavelForm(request.POST or None)
-
-#     if((formP.is_valid()) and (formR.is_valid())):
-#         formP.save()
-#         formR.save()
-#         return redirect('../RegistroGrupoFamiliar')
-#     return render(request, 'registros/form_prontuario.html', {'formP': formP, 'formR': formR})
 
 @login_required
 def RegistrarResponsavel(request):
@@ -68,12 +56,35 @@ def RegistrarResponsavel(request):
 
 @login_required
 def RegistrarGrupoFamiliar(request):
-    formGrupoFamiliar = GrupoFamiliarForm(request.POST or None)
+    formGF = GrupoFamiliarForm(request.POST or None)
+    resp = Responsavel.objects.all().last()
+    #print('\n >>> {} '.format(request.POST['responsavel']))
+    if('nome_integrante' in request.POST):
+        GrupoFamiliar.objects.create(
+            responsavel = Responsavel.objects.all().last(),
+            nome_integrante = request.POST['nome_integrante'],
+            parentesco = request.POST['parentesco'],
+            dt_nascimento = request.POST['dt_nascimento'],
+            sexo = request.POST['sexo'],
+            estado_civil = request.POST['estado_civil'],
+            naturalidade = request.POST['naturalidade'],
+            escolaridade = request.POST['escolaridade'],
+            ativ_economica = request.POST['ativ_economica'],
+            renda = request.POST['renda'],
+        ).save()
+    else:
+        return render(
+            request, 
+            'registros/form_integrantes.html', 
+            {'formGF': formGF, 'responsavel': resp}
+        )
+    return redirect('RegistroGrupoFamiliar')
 
-    if(formGrupoFamiliar.is_valid()):
-        formGrupoFamiliar.save()
-        return redirect('RegistroGrupoFamiliar')
-    return render(request, 'registros/form_integrantes.html', {'formGrupoFamiliar': formGrupoFamiliar})
+
+    # if(formGF.is_valid()):
+    #     formGF.save()
+    #     return redirect('RegistroGrupoFamiliar')
+    # return render(request, 'registros/form_integrantes.html', {'formGF': formGF, 'responsavel': resp})
 
 @login_required
 def AtualizarProntuario(request, id):

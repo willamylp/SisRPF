@@ -35,7 +35,7 @@ class Responsavel(models.Model):
         verbose_name_plural = ("Responsaveis")
 
     def __str__(self):
-        return '{} | {}'.format(self.nome, self.prontuario.numero)
+        return '{} | nº {}'.format(self.nome, self.prontuario.numero)
 
     def get_absolute_url(self):
         return reverse("Responsavel_detail", kwargs={"pk": self.pk})
@@ -70,7 +70,7 @@ class GrupoFamiliar(models.Model):
 
     responsavel = models.ForeignKey(Responsavel, on_delete=models.CASCADE)
 
-    nome = models.CharField(max_length=200, blank=False, null=False)
+    nome_integrante = models.CharField(max_length=200, blank=False, null=False)
     parentesco = models.CharField(max_length=50, blank=False, null=False)
     dt_nascimento = models.DateField(blank=False)
 

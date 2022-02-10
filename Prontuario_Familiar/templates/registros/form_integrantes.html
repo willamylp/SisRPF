@@ -1,5 +1,209 @@
-<form action = "" method = "post">
-    {% csrf_token %}
-    {{formGrupoFamiliar.as_p }}
-    <input type="submit" value="Submit">
-</form>
+{% extends "base.html" %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}INÍCIO — SisRPF{% endblock title %}
+
+{% block styles %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+	<!-- Waves Effect Css -->
+    <link href="{% static 'plugins/node-waves/waves.css' %}" rel="stylesheet" />
+	<!-- Animation Css -->
+    <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />
+	<!-- Custom Css -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+{% endblock styles %}
+
+{% block body %}
+<body>
+    {% block content %}
+        <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+            {% include 'header.html' %}
+            
+            <div class="app-main">
+                {% include "menu.html" %}
+
+                <div class="app-main__outer">
+                    <div class="app-main__inner">
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-id mr-1 icon-gradient bg-grow-early">
+                                        </i>
+                                    </div>
+                                    <div>Registrar Prontuário
+                                        <div class="page-title-subheading">
+                                            <span>Registro do Grupo Familiar do Prontuário</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-card mb-3 card">
+                            <div class="card-body">
+                                <form class="needs-validation" method="POST" novalidate>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <label>Responsável Pelo Prontuário</label>
+                                            <div class="alert alert-primary fade show" role="alert">
+                                                <b>{{ responsavel }}</b>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-4">
+                                            <label for="id_nome_integrante">Nome do Integrante</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <i class="fa fa-user-circle text-white" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formGF.nome_integrante|add_class:'form-control'|attr:'placeholder:Membro do Grupo Familiar' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Por favor, informe um Nome!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="id_dt_nascimento">Data de Nascimento</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend ">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <i class="fa fa-calendar-check text-white" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formGF.dt_nascimento|add_class:'form-control'|attr:'type:date' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Por favor, informe a Data corretamente!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-4">
+                                            <label for="id_nome_integrante">Parentesco</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <i class="fa fa-user-circle text-white" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                {{ formGF.parentesco|add_class:'form-control'|attr:'placeholder:Mãe, pai, filho ...' }}
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Por favor, informe um Nome!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-8 mb-4">
+                                            <label for="id_nome_integrante">Nome do Integrante</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <i class="fa fa-user-circle text-white" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Por favor, informe um Nome!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-8 mb-4">
+                                            <label for="id_nome_integrante">Nome do Integrante</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-night-sky">
+                                                        <i class="fa fa-user-circle text-white" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                
+                                                <div class="valid-feedback">
+                                                    OK!
+                                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Por favor, informe um Nome!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <select name="select" id="exampleSelect" class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                    {{ formGF.sexo }}
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-2">
+                                            <i class="fa fa-square icon-gradient bg-night-sky" aria-hidden="true"></i>
+                                            <strong>&nbsp;Campos Obrigatórios</strong>
+                                        </div>
+                                    </div>
+                                    <div class="d-block text-center card-footer mt-2">
+                                        <button class="btn-transition btn btn-lg btn-outline-success mt-3" type="submit">
+                                            <i class="fa fa-save" aria-hidden="true"></i>
+                                            <b>&nbsp;Salvar e Registrar Outro Integrante</b>
+                                        </button>
+                                        {% comment %} <a href="#" target="_self">
+                                            <button class="btn-transition btn btn-lg btn-outline-primary mt-3">
+                                                <i class="fa fa-list" aria-hidden="true"></i>
+                                                <b>&nbsp;Listar Prontuários</b>
+                                            </button>
+                                        </a> {% endcomment %}
+                                    </div>
+                                </form>
+                                <script>
+                                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                    (function() {
+                                        'use strict';
+                                        window.addEventListener('load', function() {
+                                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                            var forms = document.getElementsByClassName('needs-validation');
+                                            // Loop over them and prevent submission
+                                            var validation = Array.prototype.filter.call(forms, function(form) {
+                                                form.addEventListener('submit', function(event) {
+                                                    if (form.checkValidity() === false) {
+                                                        event.preventDefault();
+                                                        event.stopPropagation();
+                                                    }
+                                                    form.classList.add('was-validated');
+                                                }, false);
+                                            });
+                                        }, false);
+                                    })();
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div>
+        </div>
+    {% endblock content %}
+
+    {% block scripts %}
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    {% endblock scripts %}
+</body>
+{% endblock body %}
