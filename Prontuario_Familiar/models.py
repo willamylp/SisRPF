@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from datetime import datetime
 
@@ -80,7 +81,7 @@ class GrupoFamiliar(models.Model):
     
     escolaridade = models.CharField(max_length=50, blank=True, choices=ESCOLARIDADE, default='')
     ativ_economica = models.CharField(max_length=50, blank=False, null=False)
-    renda = models.FloatField(blank=True)
+    renda = models.FloatField(blank=True, null=True, default=0.00)
 
     class Meta:
         verbose_name = ("Grupo Familiar")
