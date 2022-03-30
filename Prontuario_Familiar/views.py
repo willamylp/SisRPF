@@ -30,7 +30,6 @@ def RegistrarProntuario(request):
                 bairro = request.POST['bairro'],
                 ponto_referencia = request.POST['ponto_referencia'],
             ).save()
-            
         #elif(request.POST['nome'] == ''):
         else:
             return render(
@@ -58,7 +57,7 @@ def RegistrarResponsavel(request):
 def RegistrarGrupoFamiliar(request):
     formGF = GrupoFamiliarForm(request.POST or None)
     resp = Responsavel.objects.all().last()
-    #print('\n >>> {} '.format(request.POST['responsavel']))
+
     if('nome_integrante' in request.POST):
         GrupoFamiliar.objects.create(
             responsavel = Responsavel.objects.all().last(),

@@ -47,7 +47,7 @@
                                     {% csrf_token %}
 
                                     <div class="form-row">
-                                        <div class="col-md-3 mb-2">
+                                        <div class="col-md-2 mb-2">
                                             <label for="id_numero">Número do Prontuário</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
@@ -81,7 +81,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-5 mb-2">
+                                        <div class="col-md-6 mb-2">
                                             <label for="id_unidade_saude">Unidade de Saúde</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
@@ -103,7 +103,7 @@
                                     <hr>
 
                                     <div class="form-row">
-                                        <div class="col-md-12 mb-4">
+                                        <div class="col-md-6 mb-4">
                                             <label for="id_unidade_saude">Nome do Responsável</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
@@ -120,10 +120,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="form-row">
-                                        <div class="col-md-6 mb-3">
+                                        <div class="col-md-3 mb-3">
                                             <label for="id_dt_nascimento">Data de Nascimento</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend ">
@@ -140,7 +137,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 mb-3">
+                                        <div class="col-md-3 mb-3">
                                             <label for="id_cpf">CPF</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
@@ -148,7 +145,7 @@
                                                         <i class="fa fa-address-card text-black" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
-                                                {{ formR.cpf|add_class:'form-control' }}
+                                                {{ formR.cpf|add_class:'form-control'|attr:'placeholder:Somente Números' }}
                                                 <div class="valid-feedback">
                                                     OK!
                                                 </div>
@@ -158,6 +155,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    
 
                                     <div class="form-row">
                                         <div class="col-md-9 mb-4">

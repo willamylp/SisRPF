@@ -55,7 +55,11 @@
                             <div class="btn-group">
                                 <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
                                     <div class="page-title-icon">
-                                        <i class="pe-7s-user icon-gradient bg-malibu-beach" style="font-size: 3rem;"></i>
+                                        {% if user.is_staff %}
+                                            <i class="pe-7s-user icon-gradient bg-grow-early" style="font-size: 3rem;"></i>
+                                        {% else %}
+                                            <i class="pe-7s-user icon-gradient bg-malibu-beach" style="font-size: 3rem;"></i>
+                                        {% endif %}
                                     </div>
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">

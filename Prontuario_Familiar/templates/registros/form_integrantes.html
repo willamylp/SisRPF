@@ -31,8 +31,7 @@
                             <div class="page-title-wrapper">
                                 <div class="page-title-heading">
                                     <div class="page-title-icon">
-                                        <i class="pe-7s-id mr-1 icon-gradient bg-grow-early">
-                                        </i>
+                                        <i class="pe-7s-id mr-1 icon-gradient bg-grow-early"></i>
                                     </div>
                                     <div>Registrar Prontuário
                                         <div class="page-title-subheading">
@@ -45,6 +44,8 @@
                         <div class="main-card mb-3 card">
                             <div class="card-body">
                                 <form class="needs-validation" method="POST" novalidate>
+                                    {% csrf_token %}
+
                                     <div class="form-row">
                                         <div class="col-md-12">
                                             <label>Responsável Pelo Prontuário</label>
@@ -94,13 +95,15 @@
                                         <div class="col-md-3 mb-3">
                                             <label for="id_dt_nascimento">Sexo</label>
                                             <div class="input-group">
-                                                <select name="select" class="form-control">
-                                                    <option></option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-heavy-rai">
+                                                        <i class="fa fa-venus-mars text-black" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                <select name="sexo" class="form-control" id="id_sexo">
+                                                {% for value, text in formGF.sexo.field.choices %}
+                                                    <option value="{{ value }}"> {{ text }}</option>
+                                                {% endfor %}
                                                 </select>
                                             </div>
                                         </div>
@@ -111,7 +114,7 @@
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-night-sky">
-                                                        <i class="fa fa-user-circle text-white" aria-hidden="true"></i>
+                                                        <i class="fa fa-users text-white" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
                                                 {{ formGF.parentesco|add_class:'form-control'|attr:'placeholder:Mãe, pai, filho ...' }}
@@ -128,7 +131,7 @@
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-night-sky">
-                                                        <i class="fa fa-user-circle text-white" aria-hidden="true"></i>
+                                                        <i class="fa fa-map-marker text-white" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
                                                 {{ formGF.naturalidade|add_class:'form-control'|attr:'placeholder:Cidade onde Nasceu' }}
@@ -141,15 +144,17 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="id_dt_nascimento">Estado Civil</label>
+                                            <label for="id_estado_civil">Estado Civil</label>
                                             <div class="input-group">
-                                                <select name="select" class="form-control">
-                                                    <option></option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-heavy-rai">
+                                                        <i class="fa fa-handshake text-black" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                <select name="estado_civil" class="form-control" id="id_estado_civil">
+                                                {% for value, text in formGF.estado_civil.field.choices %}
+                                                    <option value="{{ value }}"> {{ text }}</option>
+                                                {% endfor %}
                                                 </select>
                                             </div>
                                         </div>
@@ -160,7 +165,7 @@
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-night-sky">
-                                                        <i class="fa fa-user-circle text-white" aria-hidden="true"></i>
+                                                        <i class="fa fa-briefcase text-white" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
                                                 {{ formGF.ativ_economica|add_class:'form-control'|attr:'placeholder:Profissão' }}
@@ -177,7 +182,7 @@
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text bg-heavy-rai">
-                                                        <i class="fa fa-user-circle text-black" aria-hidden="true"></i>
+                                                        <i class="fa fa-money-bill text-black" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
                                                 {{ formGF.renda|add_class:'form-control'|attr:'placeholder:R$' }}
@@ -190,15 +195,17 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="id_dt_nascimento">Grau de Escolaridade</label>
+                                            <label for="id_escolaridade">Grau de Escolaridade</label>
                                             <div class="input-group">
-                                                <select name="select" class="form-control">
-                                                    <option></option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-heavy-rai">
+                                                        <i class="fa fa-graduation-cap text-black" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                <select name="escolaridade" class="form-control" id="id_escolaridade">
+                                                {% for value, text in formGF.escolaridade.field.choices %}
+                                                    <option value="{{ value }}"> {{ text }}</option>
+                                                {% endfor %}
                                                 </select>
                                             </div>
                                         </div>
@@ -215,14 +222,15 @@
                                             <i class="fa fa-save" aria-hidden="true"></i>
                                             <b>&nbsp;Salvar e Registrar Outro Integrante</b>
                                         </button>
-                                        {% comment %} <a href="#" target="_self">
+                                        <a href="#" target="_self">
                                             <button class="btn-transition btn btn-lg btn-outline-primary mt-3">
                                                 <i class="fa fa-list" aria-hidden="true"></i>
                                                 <b>&nbsp;Listar Prontuários</b>
                                             </button>
-                                        </a> {% endcomment %}
+                                        </a>
                                     </div>
                                 </form>
+                                <hr/>
                                 <script>
                                     // Example starter JavaScript for disabling form submissions if there are invalid fields
                                     (function() {

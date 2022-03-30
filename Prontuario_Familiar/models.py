@@ -21,7 +21,7 @@ class Responsavel(models.Model):
     # ---> INFORMAÇÕES PESSOAIS <---
     nome = models.CharField(max_length=200, blank=False, null=False)
     dt_nascimento = models.DateField(blank=False)
-    cpf = models.CharField(max_length=14, unique=True, blank=True, null=True)
+    cpf = models.CharField(max_length=14, unique=False, blank=True, null=True)
 
     # ---> ENDEREÇO <---
     logradouro = models.CharField(max_length=100, blank=False)
