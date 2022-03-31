@@ -13,7 +13,7 @@ from .forms import ProntuarioForm, ResponsavelForm, GrupoFamiliarForm
 def RegistrarProntuario(request):
     formP = ProntuarioForm(request.POST or None)
     formR = ResponsavelForm(request.POST or None)
-
+    
     if(formP.is_valid()):
         formP.save()
         if('nome' in request.POST):
@@ -37,7 +37,8 @@ def RegistrarProntuario(request):
                 'registros/form_prontuario.html', 
                 {'formP': formP, 'formR': formR}
             )
-        return redirect('../RegistroGrupoFamiliar')
+        id_resp = Responsavel.objects.latest('pk').pk
+        return redirect(f'../RegistroGrupoFamiliar/{id_resp}')
     return render(
         request,
         'registros/form_prontuario.html',
@@ -50,13 +51,14 @@ def RegistrarResponsavel(request):
     
     if(formResponsavel.is_valid()):
         formResponsavel.save()
-        return redirect('../RegistroGrupoFamiliar')
+        resp = Responsavel.objects.latest('pk').pk
+        return redirect(f'../RegistroGrupoFamiliar/{resp}')
     return render(request, 'registros/form_responsavel.html', {'formResponsavel': formResponsavel})
 
 @login_required
-def RegistrarGrupoFamiliar(request):
+def RegistrarGrupoFamiliar(request, id):
     formGF = GrupoFamiliarForm(request.POST or None)
-    resp = Responsavel.objects.all().last()
+    nome_resp = Responsavel.objects.filter(id=id)[0]
 
     if('nome_integrante' in request.POST):
         GrupoFamiliar.objects.create(
@@ -75,9 +77,9 @@ def RegistrarGrupoFamiliar(request):
         return render(
             request, 
             'registros/form_integrantes.html', 
-            {'formGF': formGF, 'responsavel': resp}
+            {'formGF': formGF, 'responsavel': nome_resp}
         )
-    return redirect('RegistroGrupoFamiliar')
+    return redirect(f'../RegistroGrupoFamiliar/{id}')
 
 
     # if(formGF.is_valid()):
