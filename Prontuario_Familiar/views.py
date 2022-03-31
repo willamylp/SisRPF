@@ -46,7 +46,7 @@ def RegistrarProntuario(request):
     )
 
 @login_required
-def RegistrarResponsavel(request):
+def RegistrarResponsavel(request, id):
     formResponsavel = ResponsavelForm(request.POST or None)
     
     if(formResponsavel.is_valid()):
@@ -63,7 +63,7 @@ def RegistrarGrupoFamiliar(request, id):
 
     if('nome_integrante' in request.POST):
         GrupoFamiliar.objects.create(
-            responsavel = Responsavel.objects.all().last(),
+            responsavel_id = id,
             nome_integrante = request.POST['nome_integrante'],
             parentesco = request.POST['parentesco'],
             dt_nascimento = request.POST['dt_nascimento'],
