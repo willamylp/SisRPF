@@ -88,7 +88,7 @@ class GrupoFamiliar(models.Model):
         verbose_name_plural = ("GruposFamiliares")
 
     def __str__(self):
-        return self.nome
+        return self.nome_integrante
 
     def get_absolute_url(self):
         return reverse("GrupoFamiliar_detail", kwargs={"pk": self.pk})

@@ -59,6 +59,7 @@ def RegistrarResponsavel(request):
 def RegistrarGrupoFamiliar(request, id):
     formGF = GrupoFamiliarForm(request.POST or None)
     nome_resp = Responsavel.objects.filter(id=id)[0]
+    integrantes = GrupoFamiliar.objects.filter(responsavel_id=id)
 
     if('nome_integrante' in request.POST):
         GrupoFamiliar.objects.create(
@@ -77,7 +78,7 @@ def RegistrarGrupoFamiliar(request, id):
         return render(
             request, 
             'registros/form_integrantes.html', 
-            {'formGF': formGF, 'responsavel': nome_resp}
+            {'formGF': formGF, 'responsavel': nome_resp, 'grupoF': integrantes}
         )
     return redirect(f'../RegistroGrupoFamiliar/{id}')
 
