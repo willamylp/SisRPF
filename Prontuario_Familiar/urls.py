@@ -1,19 +1,18 @@
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
-from .views import RegistrarProntuario, RegistrarResponsavel, RegistrarGrupoFamiliar
-from .views import AtualizarProntuario, AtualizarResponsavel, AtualizarGrupoFamiliar
-from. views import BuscarProntuario, DeletarProntuario, DeletarIntegrante
+from .views import RegistrarProntuario, RegistrarGrupoFamiliar
+from .views import AtualizarProntuario, AtualizarGrupoFamiliar
+from. views import DeletarProntuario, DeletarIntegrante
+from. views import BuscarProntuario
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('RegistroProntuario/', RegistrarProntuario, name="RegistroProntuario"),
-    path('RegistroResponsavel/', RegistrarResponsavel, name="RegistroResponsavel"),
     path('RegistroGrupoFamiliar/<int:id>', RegistrarGrupoFamiliar, name="RegistroGrupoFamiliar"),
 
     path('AtualizarProntuario/<int:id>', AtualizarProntuario, name="AtualizarProntuario"),
-    path('AtualizarResponsavel/<int:id>', AtualizarResponsavel, name="AtualizarResponsavel"),
     path('AtualizarGrupoFamiliar/<int:id>', AtualizarGrupoFamiliar, name="AtualizarGrupoFamiliar"),
 
     path('BuscarProntuario/<int:id>', BuscarProntuario, name='BuscarProntuario'),

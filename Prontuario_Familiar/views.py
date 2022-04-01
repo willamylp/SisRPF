@@ -30,7 +30,6 @@ def RegistrarProntuario(request):
                 bairro = request.POST['bairro'],
                 ponto_referencia = request.POST['ponto_referencia'],
             ).save()
-        #elif(request.POST['nome'] == ''):
         else:
             return render(
                 request, 
@@ -44,16 +43,6 @@ def RegistrarProntuario(request):
         'registros/form_prontuario.html',
         {'formP': formP, 'formR': formR}
     )
-
-@login_required
-def RegistrarResponsavel(request, id):
-    formResponsavel = ResponsavelForm(request.POST or None)
-    
-    if(formResponsavel.is_valid()):
-        formResponsavel.save()
-        resp = Responsavel.objects.latest('pk').pk
-        return redirect(f'../RegistroGrupoFamiliar/{resp}')
-    return render(request, 'registros/form_responsavel.html', {'formResponsavel': formResponsavel})
 
 @login_required
 def RegistrarGrupoFamiliar(request, id):
@@ -82,24 +71,10 @@ def RegistrarGrupoFamiliar(request, id):
         )
     return redirect(f'../RegistroGrupoFamiliar/{id}')
 
-
-    # if(formGF.is_valid()):
-    #     formGF.save()
-    #     return redirect('RegistroGrupoFamiliar')
-    # return render(request, 'registros/form_integrantes.html', {'formGF': formGF, 'responsavel': resp})
-
 @login_required
 def AtualizarProntuario(request, id):
     prontuario = get_object_or_404(Prontuario, pk=id)
     form = ProntuarioForm(request.POST or None, instance=prontuario)
-    if(form.is_valid()):
-        form.save()
-        return redirect('../../ListarProntuarios')
-
-@login_required
-def AtualizarResponsavel(request, id):
-    responsavel = get_object_or_404(Responsavel, pk=id)
-    form = ProntuarioForm(request.POST or None, instance=responsavel)
     if(form.is_valid()):
         form.save()
         return redirect('../../ListarProntuarios')
