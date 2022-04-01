@@ -119,6 +119,21 @@ def AtualizarGrupoFamiliar(request, id):
         return redirect('../../ListarProntuarios')
 
 @login_required
+def ListarProntuarios(request):
+    prontuarios = Prontuario.objects.all().values()
+    responsaveis = Responsavel.objects.all().values()
+    grupoFamiliar = GrupoFamiliar.objects.all().values()
+
+    return render(
+        request,
+        'listagem/list_prontuarios.html', {
+            'prontuarios': prontuarios, 
+            'responsaveis': responsaveis,
+            'grupoFamiliar': grupoFamiliar
+        }
+    )
+
+@login_required
 def BuscarProntuario(request):
     pass
 
