@@ -14,6 +14,10 @@
     <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />
 	<!-- Custom Css -->
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <!-- SweetAlert Css -->
+    <link href="{% static 'plugins/sweetalert/sweetalert2.min.css' %}" rel="stylesheet" />
+
+
 {% endblock styles %}
 
 {% block body %}
@@ -251,7 +255,7 @@
                                                 <tbody>
                                                     {% for integrante in grupoF %}
                                                     <tr>
-                                                        <th scope="row">1</th>
+                                                        <th scope="row">{{ forloop.counter }}</th>
                                                         <td>{{ integrante.nome_integrante}}</td>
                                                         <td>{{ integrante.dt_nascimento }}</td>
                                                         <td>{{ integrante.parentesco }}</td>
@@ -264,7 +268,7 @@
                                                                         <i class="fa fa-pen icon-gradient bg-happy-itmeo"></i>
                                                                         <span class="ml-2">Editar</span>
                                                                     </button>
-                                                                    <button type="button" tabindex="0" class="dropdown-item" style="display: block">
+                                                                    <button type="button" tabindex="0" class="dropdown-item" style="display: block" onClick="ConfirmarDelete({{ integrante.id }})">
                                                                         <i class="fa fa-trash icon-gradient bg-strong-bliss"></i>
                                                                         <span class="ml-2">Excluir</span>
                                                                     </button>
@@ -309,6 +313,11 @@
 
     {% block scripts %}
         <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'js/confirmDelete.js' %}"></script>
+
+        <script src="{% static 'plugins/sweetalert/sweetalert2.all.min.js' %}"></script>
+
     {% endblock scripts %}
 </body>
 {% endblock body %}
