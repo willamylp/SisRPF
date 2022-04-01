@@ -1,4 +1,5 @@
 function ConfirmarDelete(valor) {
+    
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-danger',

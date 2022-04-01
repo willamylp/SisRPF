@@ -117,6 +117,15 @@ def BuscarProntuario(request):
     pass
 
 @login_required
+def DeletarIntegrante(request, id_resp, id):
+    integrante = get_object_or_404(GrupoFamiliar, pk=id)
+    integrante.delete()
+    
+    GrupoFamiliar.objects.filter(responsavel_id=id)
+
+    return redirect(f'../../RegistroGrupoFamiliar/{id_resp}')
+
+@login_required
 def DeletarProntuario(request, id):
     prontuario = get_object_or_404(Prontuario, pk=id)
     prontuario.delete()

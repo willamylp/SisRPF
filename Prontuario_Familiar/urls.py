@@ -3,7 +3,7 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from .views import RegistrarProntuario, RegistrarResponsavel, RegistrarGrupoFamiliar
 from .views import AtualizarProntuario, AtualizarResponsavel, AtualizarGrupoFamiliar
-from. views import BuscarProntuario, DeletarProntuario
+from. views import BuscarProntuario, DeletarProntuario, DeletarIntegrante
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -17,5 +17,7 @@ urlpatterns = [
     path('AtualizarGrupoFamiliar/<int:id>', AtualizarGrupoFamiliar, name="AtualizarGrupoFamiliar"),
 
     path('BuscarProntuario/<int:id>', BuscarProntuario, name='BuscarProntuario'),
-    path('DeletarProntuario/<int:id>', DeletarProntuario, name="DeletarProntuario")
+
+    path('DeletarProntuario/<int:id>', DeletarProntuario, name="DeletarProntuario"),
+    path('DeletarIntegrante/<int:id_resp>/<int:id>', DeletarIntegrante, name="DeletarIntegrante")
 ]
