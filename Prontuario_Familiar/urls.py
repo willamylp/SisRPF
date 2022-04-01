@@ -12,7 +12,7 @@ urlpatterns = [
     path('RegistroProntuario/', RegistrarProntuario, name="RegistroProntuario"),
     path('RegistroGrupoFamiliar/<int:id>', RegistrarGrupoFamiliar, name="RegistroGrupoFamiliar"),
 
-    path('AtualizarProntuario/<int:id>', AtualizarProntuario, name="AtualizarProntuario"),
+    path('AtualizarProntuario/<int:id_p>/<int:id_r>', AtualizarProntuario, name="AtualizarProntuario"),
     path('AtualizarGrupoFamiliar/<int:id>', AtualizarGrupoFamiliar, name="AtualizarGrupoFamiliar"),
 
     path('BuscarProntuario/<int:id>', BuscarProntuario, name='BuscarProntuario'),

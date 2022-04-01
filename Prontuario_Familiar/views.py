@@ -19,7 +19,8 @@ def RegistrarProntuario(request):
         if('nome' in request.POST):
             Responsavel.objects.create(
                 prontuario = Prontuario.objects.get(
-                    pk=Prontuario.objects.filter(numero=request.POST['numero'])[:1]
+                    pk=Prontuario.objects.filter(
+                        numero=request.POST['numero'])[:1]
                 ),
                 nome = request.POST['nome'],
                 dt_nascimento = request.POST['dt_nascimento'],
@@ -72,12 +73,42 @@ def RegistrarGrupoFamiliar(request, id):
     return redirect(f'../RegistroGrupoFamiliar/{id}')
 
 @login_required
-def AtualizarProntuario(request, id):
-    prontuario = get_object_or_404(Prontuario, pk=id)
-    form = ProntuarioForm(request.POST or None, instance=prontuario)
-    if(form.is_valid()):
-        form.save()
-        return redirect('../../ListarProntuarios')
+def AtualizarProntuario(request, id_p, id_r):
+    pront = get_object_or_404(Prontuario, pk=id_p)
+    resp = get_object_or_404(Responsavel, pk=id_r)
+
+    formP = ProntuarioForm(request.POST or None, instance=pront)
+    formR = ResponsavelForm(request.POST or None, instance=resp)
+
+    if(formP.is_valid()):
+        formP.save()
+        if('nome' in request.POST):
+            Responsavel.objects.create(
+                prontuario=Prontuario.objects.get(
+                    pk=Prontuario.objects.filter(
+                        numero=request.POST['numero'])[:1]
+                ),
+                nome=request.POST['nome'],
+                dt_nascimento=request.POST['dt_nascimento'],
+                cpf=request.POST['cpf'],
+                logradouro=request.POST['logradouro'],
+                num_endereco=request.POST['num_endereco'],
+                complemento=request.POST['complemento'],
+                bairro=request.POST['bairro'],
+                ponto_referencia=request.POST['ponto_referencia'],
+            ).save()
+        else:
+            return render(
+                request,
+                'registros/form_prontuario.html',
+                {'formP': formP, 'formR': formR}
+            )
+        return redirect(f'../../RegistroGrupoFamiliar/{id_r}')
+    return render(
+        request,
+        'registros/form_prontuario.html',
+        {'formP': formP, 'formR': formR}
+    )
 
 @login_required
 def AtualizarGrupoFamiliar(request, id):
