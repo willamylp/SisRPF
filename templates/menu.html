@@ -36,7 +36,11 @@
             <ul class="vertical-nav-menu">
                 <li class="app-sidebar__heading">HOME PAGE</li>
                 <li>
+                    {% if 'home' in request.path %}
                     <a href="{% url 'home' %}" class="mm-active">
+                    {% else %}
+                    <a href="{% url 'home' %}">
+                    {% endif %}
                         <i class="metismenu-icon pe-7s-home icon-gradient bg-plum-plate"></i>
                         Início
                     </a>
@@ -59,25 +63,41 @@
                             </a>
                         </li>
                         <li>
+                            {% if 'RegistroProntuario' in request.path %}
+                            <a href="{% url 'RegistroProntuario' %}" class="mm-active">
+                            {% else %}
                             <a href="{% url 'RegistroProntuario' %}">
+                            {% endif %}
                                 <i class="pe-7s-id mr-1 icon-gradient bg-grow-early" style="font-size: 1.1rem;"></i>
                                 Registrar Prontuário
                             </a>
                         </li>
                         <li>
+                            {% if 'AtualizarProntuario' in request.path %}
+                            <a href="#" class="mm-active">
+                            {% else %}
                             <a href="#">
+                            {% endif %}
                                 <i class="pe-7s-pen mr-1 icon-gradient bg-happy-itmeo" style="font-size: 1.1rem;"></i>
                                 Editar Prontuário
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            {% if 'ListarProntuarios' in request.path %}
+                            <a href="{% url 'ListarProntuarios' %}" class="mm-active">
+                            {% else %}
+                            <a href="{% url 'ListarProntuarios' %}">
+                            {% endif %}
                                 <i class="pe-7s-news-paper mr-1 icon-gradient bg-premium-dark" style="font-size: 1.1rem;"></i>
                                 Listar Prontuários
                             </a>
                         </li>
                         <li>
+                            {% if 'DeletarProntuario' in request.path %}
+                            <a href="#" class="mm-active">
+                            {% else %}
                             <a href="#">
+                            {% endif %}
                                 <i class="pe-7s-trash mr-1 icon-gradient bg-love-kiss" style="font-size: 1.1rem;"></i>
                                 Deletar Prontuários
                             </a>

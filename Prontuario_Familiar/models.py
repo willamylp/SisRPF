@@ -53,7 +53,7 @@ class GrupoFamiliar(models.Model):
         ('Divorciado(a)', 'DIVORCIADO(A)'),
         ('Separado(a)', 'SEPARADO(A)'),
         ('Solteiro(a)', 'SOLTEIRO(A)'),
-        ('União Estável(a)', 'UNIÃO ESTÁVEL(A)'),
+        ('União Estável', 'UNIÃO ESTÁVEL'),
         ('Viúvo(a)', 'VIÚVO(A)'),
         ('Outro', 'OUTRO')
     )
