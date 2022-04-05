@@ -225,12 +225,12 @@
                                             <i class="fa fa-save" aria-hidden="true"></i>
                                             <b>&nbsp;Salvar e Registrar Outro Integrante</b>
                                         </button>
-                                        <a href="#" target="_self">
-                                            <button class="btn-transition btn btn-lg btn-outline-primary mt-3">
-                                                <i class="fa fa-list" aria-hidden="true"></i>
-                                                <b>&nbsp;Listar Prontuários</b>
-                                            </button>
-                                        </a>
+                                        
+                                        <button class="btn-transition btn btn-lg btn-outline-primary mt-3" onClick="location.href='{% url 'ListarProntuarios' %}'">
+                                            <i class="fa fa-list" aria-hidden="true"></i>
+                                            <b>&nbsp;Listar Prontuários</b>
+                                        </button>
+                                        
                                     </div>
                                 </form>
 
