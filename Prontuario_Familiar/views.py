@@ -7,13 +7,13 @@ from Home.urls import home
 from .models import Responsavel, Prontuario, GrupoFamiliar
 from .forms import ProntuarioForm, ResponsavelForm, GrupoFamiliarForm
 
-# Create your views here.
 
 @login_required
 def RegistrarProntuario(request):
     formP = ProntuarioForm(request.POST or None)
     formR = ResponsavelForm(request.POST or None)
-    
+    ultimoReg = Prontuario.objects.all().last()
+
     if(formP.is_valid()):
         formP.save()
         if('nome' in request.POST):
@@ -35,14 +35,14 @@ def RegistrarProntuario(request):
             return render(
                 request, 
                 'registros/form_prontuario.html', 
-                {'formP': formP, 'formR': formR}
+                {'formP': formP, 'formR': formR, 'ultimoRegistro': ultimoReg}
             )
         id_resp = Responsavel.objects.latest('pk').pk
         return redirect(f'../RegistroGrupoFamiliar/{id_resp}')
     return render(
         request,
         'registros/form_prontuario.html',
-        {'formP': formP, 'formR': formR}
+        {'formP': formP, 'formR': formR, 'ultimoRegistro': ultimoReg}
     )
 
 @login_required
@@ -120,16 +120,16 @@ def AtualizarGrupoFamiliar(request, id):
 
 @login_required
 def ListarProntuarios(request):
-    prontuarios = Prontuario.objects.all().values()
-    responsaveis = Responsavel.objects.all().values()
-    grupoFamiliar = GrupoFamiliar.objects.all().values()
+    pront = Prontuario.objects.all().values()
+    resp = Responsavel.objects.all().values()
+    grupoF = GrupoFamiliar.objects.all().values()
 
     return render(
         request,
         'listagem/list_prontuarios.html', {
-            'prontuarios': prontuarios, 
-            'responsaveis': responsaveis,
-            'grupoFamiliar': grupoFamiliar
+            'pront': pront,
+            'resp': resp,
+            'grupoF': grupoF
         }
     )
 
