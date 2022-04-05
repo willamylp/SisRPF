@@ -67,8 +67,11 @@ def RegistrarGrupoFamiliar(request, id):
     else:
         return render(
             request, 
-            'registros/form_integrantes.html', 
-            {'formGF': formGF, 'responsavel': nome_resp, 'grupoF': integrantes}
+            'registros/form_integrantes.html', {
+                'formGF': formGF,
+                'responsavel': nome_resp,
+                'grupoF': integrantes
+            }
         )
     return redirect(f'../RegistroGrupoFamiliar/{id}')
 
@@ -127,8 +130,8 @@ def ListarProntuarios(request):
     return render(
         request,
         'listagem/list_prontuarios.html', {
-            'pront': pront,
-            'resp': resp,
+            'prontuarios': pront,
+            'responsaveis': resp,
             'grupoF': grupoF
         }
     )

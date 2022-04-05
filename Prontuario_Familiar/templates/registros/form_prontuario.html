@@ -30,6 +30,7 @@
                         <div class="app-page-title">
                             <div class="page-title-wrapper">
                                 <div class="page-title-heading">
+                                    {% if 'RegistroProntuario' in request.path %}
                                     <div class="page-title-icon">
                                         <i class="pe-7s-id mr-1 icon-gradient bg-grow-early"></i>
                                     </div>
@@ -38,6 +39,16 @@
                                             <span>Registro do Prontuário Familiar do Cidadão</span>
                                         </div>
                                     </div>
+                                    {% else %}
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-id mr-1 icon-gradient bg-happy-itmeo"></i>
+                                    </div>
+                                    <div>Atualização de Prontuário
+                                        <div class="page-title-subheading">
+                                            <span>Atualização de Registro do Prontuário Familiar do Cidadão</span>
+                                        </div>
+                                    </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -46,6 +57,7 @@
                                 <form class="needs-validation" method="POST" novalidate>
                                     {% csrf_token %}
 
+                                    {% if 'RegistroProntuario' in request.path %}
                                     <div class="form-row">
                                         <div class="col-md-12">
                                             <div class="alert alert-secondary fade show card-shadow-focus m-0" role="alert">
@@ -54,6 +66,7 @@
                                         </div>
                                     </div>
                                     <hr/>
+                                    {% endif %}
                                     <div class="form-row">
                                         <div class="col-md-3 mb-2">
                                             <label for="id_numero">Número do Prontuário</label>

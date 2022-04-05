@@ -1,5 +1,4 @@
-function ConfirmarDelete(valor) {
-    
+function ConfirmarDelete(valor, tipoDelete) {
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
             confirmButton: 'btn btn-danger',
@@ -26,10 +25,19 @@ function ConfirmarDelete(valor) {
             var url;
             var urlAtual = window.location.href;
             var urlAtual = urlAtual.split('/');
-            if (urlAtual.length > 6) {
-                url = '../../DeletarIntegrante/' + valor;
-            } else {
-                url = '../DeletarIntegrante/' + valor;
+            if (tipoDelete == 'integrante') {
+                if (urlAtual.length > 6) {
+                    url = '../../DeletarIntegrante/' + valor;
+                } else {
+                    url = '../DeletarIntegrante/' + valor;
+                }
+            }
+            else {
+                if (urlAtual.length > 6) {
+                    url = '../../DeletarProntuario/' + valor;
+                } else {
+                    url = '../DeletarProntuario/' + valor;
+                }
             }
             location.href = url;
         } else if (
