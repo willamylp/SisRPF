@@ -33,6 +33,16 @@
                         <div class="app-page-title">
                             <div class="page-title-wrapper">
                                 <div class="page-title-heading">
+                                    {% if 'AtualizarGrupoFamiliar' in request.path %}
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-add-user mr-1 icon-gradient bg-arielle-smile"></i>
+                                    </div>
+                                    <div>Atualização de Integrante
+                                        <div class="page-title-subheading">
+                                            <span>Atualização de Integrante do Grupo Familiar do Prontuário</span>
+                                        </div>
+                                    </div>
+                                    {% else %}
                                     <div class="page-title-icon">
                                         <i class="pe-7s-users mr-1 icon-gradient bg-grow-early"></i>
                                     </div>
@@ -41,6 +51,7 @@
                                             <span>Registro do Grupo Familiar do Prontuário</span>
                                         </div>
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -223,11 +234,12 @@
                                             <b>&nbsp;Salvar e Registrar Outro Integrante</b>
                                         </button>
                                         
+                                        {% if 'RegistroGrupoFamiliar' in request.path %}
                                         <button class="btn-transition btn btn-lg btn-outline-primary mt-3" onClick="location.href='{% url 'ListarProntuarios' %}'">
                                             <i class="fa fa-list" aria-hidden="true"></i>
                                             <b>&nbsp;Listar Prontuários</b>
                                         </button>
-                                        
+                                        {% endif %}
                                     </div>
                                 </form>
 
@@ -263,7 +275,11 @@
                                                                     <div class="grid-menu grid-menu-2col">
                                                                         <div class="no-gutters row">
                                                                             <div class="col-sm-6">
+                                                                                {% if 'AtualizarGrupoFamiliar' in request.path %}
+                                                                                <button class="btn-icon-vertical btn-transition btn btn-outline-primary" onClick="location.href='../../AtualizarGrupoFamiliar/{{responsavel.id}}/{{integrante.id}}'">
+                                                                                {% else %}
                                                                                 <button class="btn-icon-vertical btn-transition btn btn-outline-primary" onClick="location.href='../AtualizarGrupoFamiliar/{{responsavel.id}}/{{integrante.id}}'">
+                                                                                {% endif %}
                                                                                     <i class="lnr-pencil btn-icon-wrapper"> </i>Editar
                                                                                 </button>
                                                                             </div>
