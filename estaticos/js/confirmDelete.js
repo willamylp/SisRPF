@@ -17,11 +17,13 @@ function ConfirmarDelete(valor, tipoDelete) {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
+            
             swalWithBootstrapButtons.fire(
                 'Deletado!',
                 'REGISTRO DELETADO COM SUCESSO!',
                 'success'
             )
+            
             var url;
             var urlAtual = window.location.href;
             var urlAtual = urlAtual.split('/');
@@ -39,7 +41,9 @@ function ConfirmarDelete(valor, tipoDelete) {
                     url = '../DeletarProntuario/' + valor;
                 }
             }
-            location.href = url;
+            setTimeout(function () {
+                location.href = url;
+            }, 800);
         } else if (
             /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel

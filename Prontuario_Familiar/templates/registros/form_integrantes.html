@@ -13,7 +13,7 @@
 	<!-- Animation Css -->
     <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />
 	<!-- Custom Css -->
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/mainpro.css' %}" rel="stylesheet">
     <!-- SweetAlert Css -->
     <link href="{% static 'plugins/sweetalert/sweetalert2.min.css' %}" rel="stylesheet" />
 
@@ -259,19 +259,25 @@
                                                         <td>
                                                             <div class="dropdown d-inline-block">
                                                                 <button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="mb-2 mr-2 dropdown-toggle btn btn-outline-focus"></button>
-                                                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right" style="animation: none;">
-                                                                    <button type="button" tabindex="0" class="dropdown-item" style="display: block">
-                                                                        <i class="fa fa-pen icon-gradient bg-happy-itmeo"></i>
-                                                                        <span class="ml-2">Editar</span>
-                                                                    </button>
-                                                                    <button type="button" tabindex="0" class="dropdown-item" style="display: block" onClick="ConfirmarDelete('{{responsavel.id}}/{{integrante.id}}', 'integrante')">
-                                                                        <i class="fa fa-trash icon-gradient bg-strong-bliss"></i>
-                                                                        <span class="ml-2">Excluir</span>
-                                                                    </button>
+                                                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-lg dropdown-menu dropdown-menu-right">
+                                                                    <div class="grid-menu grid-menu-2col">
+                                                                        <div class="no-gutters row">
+                                                                            <div class="col-sm-6">
+                                                                                <button class="btn-icon-vertical btn-transition btn btn-outline-primary" onClick="location.href='../AtualizarGrupoFamiliar/{{responsavel.id}}/{{integrante.id}}'">
+                                                                                    <i class="lnr-pencil btn-icon-wrapper"> </i>Editar
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <button class="btn-icon-vertical btn-transition btn btn-outline-danger" onClick="ConfirmarDelete('{{responsavel.id}}/{{integrante.id}}', 'integrante')">
+                                                                                    <i class="lnr-trash btn-icon-wrapper"></i>Deletar
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
+                                                            </div>                                                            
                                                         </td>
-                                                    </tr>
+                                                    </tr> 
                                                     {% endfor %}
                                                 </tbody>
                                             </table>
@@ -308,7 +314,7 @@
     {% endblock content %}
 
     {% block scripts %}
-        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/mainpro.js' %}"></script>
 
         <script type="text/javascript" src="{% static 'js/confirmDelete.js' %}"></script>
 

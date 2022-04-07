@@ -114,12 +114,38 @@ def AtualizarProntuario(request, id_p, id_r):
     )
 
 @login_required
-def AtualizarGrupoFamiliar(request, id):
-    integrante = get_object_or_404(Responsavel, pk=id)
-    form = ProntuarioForm(request.POST or None, instance=integrante)
-    if(form.is_valid()):
-        form.save()
-        return redirect('../../ListarProntuarios')
+def AtualizarGrupoFamiliar(request, id_resp, id_i):
+    integ = get_object_or_404(GrupoFamiliar, pk=id_i)
+    integrantes = GrupoFamiliar.objects.filter(responsavel_id=id_resp)
+
+    nome_resp = Responsavel.objects.filter(id=id_resp)[0]
+
+    formGF = GrupoFamiliarForm(request.POST or None, instance=integ)
+
+    if('nome_integrante' in request.POST):
+        GrupoFamiliar.objects.filter(id=id_i).update(
+            responsavel_id=id_resp,
+            nome_integrante=request.POST['nome_integrante'],
+            parentesco=request.POST['parentesco'],
+            dt_nascimento=request.POST['dt_nascimento'],
+            sexo=request.POST['sexo'],
+            estado_civil=request.POST['estado_civil'],
+            naturalidade=request.POST['naturalidade'],
+            escolaridade=request.POST['escolaridade'],
+            ativ_economica=request.POST['ativ_economica'],
+            renda=request.POST['renda'],
+        )
+    else:
+        return render(
+            request,
+            'registros/form_integrantes.html', {
+                'formGF': formGF,
+                'responsavel': nome_resp,
+                'grupoF': integrantes
+            }
+        )
+    return redirect(f'../../RegistroGrupoFamiliar/{id_resp}')
+
 
 @login_required
 def ListarProntuarios(request):

@@ -13,7 +13,7 @@
 	<!-- Animation Css -->
     <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />
 	<!-- Custom Css -->
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/mainpro.css' %}" rel="stylesheet">
     <!-- SweetAlert Css -->
     <link href="{% static 'plugins/sweetalert/sweetalert2.min.css' %}" rel="stylesheet" />
     <!-- JQuery DataTable Css -->
@@ -74,15 +74,26 @@
                                                         <td>
                                                             <div class="dropdown d-inline-block">
                                                                 <button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="mb-2 mr-2 dropdown-toggle btn btn-outline-focus"></button>
-                                                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right" style="animation: none;">
-                                                                    <button type="button" tabindex="0" class="dropdown-item" style="display: block" onClick="location.href='../AtualizarProntuario/{{resp.prontuario_id}}/{{resp.id}}'">
-                                                                        <i class="fa fa-pen icon-gradient bg-happy-itmeo"></i>
-                                                                        <span class="ml-2">Editar</span>
-                                                                    </button>
-                                                                    <button type="button" tabindex="0" class="dropdown-item" style="display: block" onClick="ConfirmarDelete({{resp.prontuario_id}}, 'prontuario')">
-                                                                        <i class="fa fa-trash icon-gradient bg-strong-bliss"></i>
-                                                                        <span class="ml-2">Excluir</span>
-                                                                    </button>
+                                                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-lg dropdown-menu dropdown-menu-right" style="">
+                                                                    <div class="grid-menu grid-menu-3col">
+                                                                        <div class="no-gutters row">
+                                                                            <div class="col-sm-6 col-xl-4">
+                                                                                <button class="btn-icon-vertical btn-transition btn btn-outline-secondary">
+                                                                                <i class="lnr-printer btn-icon-wrapper"> </i>Imprimir
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="col-sm-6 col-xl-4">
+                                                                                <button class="btn-icon-vertical btn-transition btn btn-outline-primary" onClick="location.href='../AtualizarProntuario/{{resp.prontuario_id}}/{{resp.id}}'">
+                                                                                    <i class="lnr-pencil btn-icon-wrapper"> </i>Editar
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="col-sm-6 col-xl-4">
+                                                                                <button class="btn-icon-vertical btn-transition btn btn-outline-danger" onClick="ConfirmarDelete({{resp.prontuario_id}}, 'prontuario')">
+                                                                                <i class="lnr-trash btn-icon-wrapper"></i>Deletar
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -102,7 +113,8 @@
     {% endblock content %}
 
     {% block scripts %}
-        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+        {% comment %} <script type="text/javascript" src="{% static 'js/main.js' %}"></script> {% endcomment %}
+        <script type="text/javascript" src="{% static 'js/mainpro.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/confirmDelete.js' %}"></script>
         <script src="{% static 'plugins/sweetalert/sweetalert2.all.min.js' %}"></script>
 
