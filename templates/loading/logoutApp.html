@@ -1,38 +1,50 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% load static %}
 
-{% block title %}Saindo...{% endblock title %}
+{% block title %}CARREGANDO...{% endblock title %}
 
 {% block styles %}
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-    <link href="{% static 'plugins/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    
+    <link href="{% static 'css/mainpro.css' %}" rel="stylesheet">
+
 {% endblock styles %}
 
 {% block body %}
-<body onload="loading('logout');" class="theme-teal bg-blue-grey">
+
+<body>
+
     {% block content %}
-    <section class="contentLoading">
-        <div class="container-fluid">
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="top: 100px">
-                    <div class="card" style="width: 70%; margin: auto;">
-                        <div class="header bg-white" align="center">
-                            <strong style="font-size: 18pt;" class="col-red">
-                                ENCERRANDO SESSÃO...
-                            </strong>
-                        </div>
-                        <div class="body" align="center" style="min-height: 300px;">
-                            <div class="demo-preloader">
-                                <div class="preloader pl-size-xl" style="margin-top: 5%;">
-                                    <div class="spinner-layer pl-red">
-                                        <div class="circle-clipper left">
-                                            <div class="circle"></div>
+        <div class="app-container app-theme-white body-tabs-shadow">
+            <div class="app-container">
+                <div class="h-100 bg-asteroid bg-animation">
+                    <div class="d-flex h-100 justify-content-center align-items-center">
+                        <div class="mx-auto app-login-box col-md-6">
+                            <div class="modal-dialog w-100 mx-auto">
+                                <div class="modal-content mt-5">
+                                    <div class="modal-body">
+                                        <div class="modal-title text-center">
+                                            <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                                                <h4 class="mb-0">
+                                                    <i class="lnr-hourglass"></i> ENCERRANDO SESSÃO...
+                                                </h4>
+                                            </div>
                                         </div>
-                                        <div class="circle-clipper right">
-                                            <div class="circle"></div>
+
+                                        <hr/>
+                                        
+                                        <div class="loader-wrapper d-flex justify-content-center align-items-center mb-5 mt-5"></div>
+                                        <div class="loader-wrapper d-flex justify-content-center align-items-center mb-5 mt-5">
+                                            <div class="loader">
+                                                <div class="line-scale-pulse-out-rapid">
+                                                    <div class="bg-secondary" style="width: 10px; height: 80px;"></div>
+                                                    <div class="bg-secondary" style="width: 10px; height: 80px;"></div>
+                                                    <div class="bg-secondary" style="width: 10px; height: 80px;"></div>
+                                                    <div class="bg-secondary" style="width: 10px; height: 80px;"></div>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <div class="loader-wrapper d-flex justify-content-center align-items-center mb-5 mt-5"></div>  
                                     </div>
                                 </div>
                             </div>
@@ -41,11 +53,18 @@
                 </div>
             </div>
         </div>
-    </section>
-    {% endblock content %}
+{% endblock content %}
 
-    {% block scripts %}
-    <script src="{% static 'js/loading.js' %}"></script>
-    {% endblock scripts %}
+{% block scripts %}
+    <script>
+        setTimeout(function () {
+            window.location.href = "../logout";
+        }, 1000);
+    </script>
+    <script type="text/javascript" src="{% static 'js/loading.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mainpro.js' %}"></script>
+    
+{% endblock scripts %}
 
+</body>
 {% endblock body %}

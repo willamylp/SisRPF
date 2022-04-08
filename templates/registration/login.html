@@ -15,31 +15,34 @@
 <body class="login-page bg-teal">
 
     {% block content %}
-    <div class="app-container app-theme-white body-tabs-shadow">
+        <div class="app-container app-theme-white body-tabs-shadow">
             <div class="app-container">
                 <div class="h-100 bg-night-sky bg-animation">
                     <div class="d-flex h-100 justify-content-center align-items-center">
                         <div class="mx-auto app-login-box col-md-6">
-                            <div class="mb-3" align="center">
+                            <div class="mb-2" align="center">
                                 <img src="{% static 'images/logo-white.png' %}" class="mb-2"/>
-                                <h6 class="text-white">Hospital Maternidade Terezinha Lula de Queiroz Santos</h6></h6>
+                                <h6 class="text-white">Hospital Maternidade Terezinha Lula de Queiroz Santos</h6>
                             </div>
                             <div class="modal-dialog w-100 mx-auto">
                                 <div class="modal-content">
-                                    <div class="modal-body">
-                                        <div class="h6 modal-title text-center">
-                                            <h6 class="mt-2 mb-2">
-                                                <span>Acesso restrito apenas a usuários autenticados pelos Administradores do sistema!</span>
-                                            </h6>
+                                    <div class="modal-body p-3">
+                                        <div class="modal-title text-center">
+                                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                                <span class="pr-2">
+                                                    <i class="fa fa-info-circle"></i>
+                                                </span>
+                                                <span>Acesso restrito apenas a usuários autenticados pelos Administradores do Sistema!</span>
+                                            </div>
                                         </div>
                                         <hr>
                                         <form id="sign_in" method="POST" class="needs-validation">
                                             {% csrf_token %}
                                             <div class="form-row">
-                                                <div class="col-md-12 mb-2">
+                                                <div class="col-md-12">
                                                     <div class="position-relative form-group">
                                                         <label for="username">
-                                                            <strong>Usuário</strong>
+                                                            <strong>Nome de Usuário</strong>
                                                         </label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
@@ -48,12 +51,10 @@
                                                                 </span>
                                                             </div>
                                                             <input type="text" class="form-control" name="username" placeholder="Usuário" required autofocus>
-                                                            <div class="valid-feedback"></div>
-                                                            <div class="invalid-tooltip"></div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12 mb-2">
+                                                <div class="col-md-12">
                                                     <div class="position-relative form-group">
                                                         <label for="password">
                                                             <strong>Senha</strong>
@@ -65,14 +66,12 @@
                                                                 </span>
                                                             </div>
                                                             <input type="password" class="form-control" name="password" placeholder="Senha" required>
-                                                            <div class="valid-feedback"></div>
-                                                            <div class="invalid-tooltip"></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer clearfix center">
-                                                <button class="mb-2 mr-2 btn-icon btn-shadow btn btn-outline-secondary btn-lg btn-block" type="submit">
+                                                <button class="mb-1 btn-icon btn-shadow btn btn-outline-secondary btn-lg btn-block" type="submit">
                                                     <i class="lnr-enter btn-icon-wrapper"></i>
                                                     <span>LOGIN</span>
                                                 </button>
@@ -101,7 +100,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-center text-white opacity-8 mt-3">
+                            <div class="text-center text-white opacity-8 mt-2">
                                 <b>Setor de Faturamento Hospitalar</b><br>
                                 <span>HMTLQS / Jucurutu-RN</span>
                             </div>
