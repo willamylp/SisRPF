@@ -33,19 +33,21 @@
                                             </h6>
                                         </div>
                                         <hr>
-                                        <form id="sign_in" method="POST">
+                                        <form id="sign_in" method="POST" class="needs-validation">
                                             {% csrf_token %}
                                             <div class="form-row">
                                                 <div class="col-md-12 mb-2">
                                                     <div class="position-relative form-group">
-                                                        <label for="username">Usuário</label>
+                                                        <label for="username">
+                                                            <strong>Usuário</strong>
+                                                        </label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text bg-night-sky">
                                                                     <i class="fa fa-user-circle text-white" aria-hidden="true"></i>
                                                                 </span>
                                                             </div>
-                                                            <input type="text" class="form-control" name="username" placeholder="Seu nome de Usuário" required autofocus>
+                                                            <input type="text" class="form-control" name="username" placeholder="Usuário" required autofocus>
                                                             <div class="valid-feedback"></div>
                                                             <div class="invalid-tooltip"></div>
                                                         </div>
@@ -53,7 +55,9 @@
                                                 </div>
                                                 <div class="col-md-12 mb-2">
                                                     <div class="position-relative form-group">
-                                                        <label for="password">Senha</label>
+                                                        <label for="password">
+                                                            <strong>Senha</strong>
+                                                        </label>
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text bg-night-sky">
@@ -68,11 +72,32 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer clearfix center">
-                                                <div class="float-right">
-                                                    <button class="btn btn-outline-primary btn-lg btn-block" type="submit">ENTRAR &rarr;</button>
-                                                </div>
+                                                <button class="mb-2 mr-2 btn-icon btn-shadow btn btn-outline-secondary btn-lg btn-block" type="submit">
+                                                    <i class="lnr-enter btn-icon-wrapper"></i>
+                                                    <span>LOGIN</span>
+                                                </button>
                                             </div>
                                         </form>
+                                        <script>
+                                            // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                            (function() {
+                                                'use strict';
+                                                window.addEventListener('load', function() {
+                                                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                                    var forms = document.getElementsByClassName('needs-validation');
+                                                    // Loop over them and prevent submission
+                                                    var validation = Array.prototype.filter.call(forms, function(form) {
+                                                        form.addEventListener('submit', function(event) {
+                                                            if (form.checkValidity() === false) {
+                                                                event.preventDefault();
+                                                                event.stopPropagation();
+                                                            }
+                                                            form.classList.add('was-validated');
+                                                        }, false);
+                                                    });
+                                                }, false);
+                                            })();
+                                        </script>
                                     </div>
                                 </div>
                             </div>
@@ -88,26 +113,7 @@
 {% endblock content %}
 
 {% block scripts %}
-    <script>
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (function() {
-                'use strict';
-                window.addEventListener('load', function() {
-                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                    var forms = document.getElementsByClassName('needs-validation');
-                    // Loop over them and prevent submission
-                    var validation = Array.prototype.filter.call(forms, function(form) {
-                        form.addEventListener('submit', function(event) {
-                            if (form.checkValidity() === false) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                            }
-                            form.classList.add('was-validated');
-                        }, false);
-                    });
-                }, false);
-            })();
-        </script>
+    
     <script type="text/javascript" src="{% static 'js/mainpro.js' %}"></script>
 
 {% endblock scripts %}
