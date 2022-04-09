@@ -34,15 +34,21 @@ def RegistrarProntuario(request):
         else:
             return render(
                 request, 
-                'registros/form_prontuario.html', 
-                {'formP': formP, 'formR': formR, 'ultimoRegistro': ultimoReg}
+                'registros/form_prontuario.html', {
+                    'formP': formP, 
+                    'formR': formR, 
+                    'ultimoRegistro': ultimoReg
+                }
             )
         id_resp = Responsavel.objects.latest('pk').pk
         return redirect(f'../RegistroGrupoFamiliar/{id_resp}')
     return render(
         request,
-        'registros/form_prontuario.html',
-        {'formP': formP, 'formR': formR, 'ultimoRegistro': ultimoReg}
+        'registros/form_prontuario.html', {
+            'formP': formP,
+            'formR': formR,
+            'ultimoRegistro': ultimoReg
+        }
     )
 
 @login_required
