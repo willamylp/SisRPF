@@ -1,8 +1,8 @@
 {% load static %}
- <div class="app-header header-shadow">
+ <div class="app-header header-shadow bg-night-sky">
     <div class="app-header__logo">
         <div>
-            <img src="{% static 'images/logo-color-120.png' %}" alt="Logo SisRPF">
+            <img src="{% static 'images/logo-white-120.png' %}" alt="Logo SisRPF">
         </div>
         <div class="header__pane ml-auto">
             <div>
@@ -25,13 +25,13 @@
     </div>
     <div class="app-header__menu">
         <span>
-            <button type="button" class="btn-icon btn-icon-only btn btn-outline-primary btn-sm mobile-toggle-header-nav mr-2" style="font-size: 0.8rem; width: 35px;">
+            <button type="button" class="btn-icon btn-icon-only btn btn-outline-light btn-sm mobile-toggle-header-nav mr-2" style="font-size: 0.8rem; width: 35px;">
                 <span class="btn-icon-wrapper">
                     <i class="fa fa-ellipsis-v fa-w-6"></i>
                 </span>
             </button>
             <a href="{% url 'logoutApp' %}" >
-                <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger">
+                <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger text-white">
                     <i class="fa fa-sign-out-alt btn-icon-wrapper"></i>
                 </button>
             </a>
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="widget-content-left ml-3 header-user-info">
+                        <div class="widget-content-left ml-3 header-user-info text-white">
                             <div class="widget-heading">
                                 Bem vindo, {{request.user.first_name}}
                             </div>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="widget-content-right header-user-info ml-5 mr-2">
                             <a href="{% url 'logoutApp' %}" >
-                                <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom" title="Sair do Sistema">
+                                <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger btn-hover-shine text-white" data-toggle="tooltip" data-placement="bottom" title="Sair do Sistema">
                                     <span>SAIR</span>
                                     <i class="lnr-exit btn-icon-wrapper"></i>
                                 </button>
